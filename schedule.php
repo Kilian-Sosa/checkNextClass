@@ -14,8 +14,12 @@
       th {
         background-color: lightblue;
       }
-      h1 {
+      h1, h3, select, form {
         text-align: center;
+      }
+      select {
+        display: block;
+        margin: 0 auto;
       }
     </style>
     <?php 
@@ -60,6 +64,35 @@
                 </tr>
             <?php }
         }
+
+        function findSubject(){
+          global $schedule;
+          $dayA = $_POST['day'];
+          $hourA = $_POST['hour'];
+          $minutesA = $_POST['minutes'];
+          $class;
+
+          if($hourA == 8 && $minutesA < 55) $class = "0";
+          if($hourA == 8 && $minutesA > 55 || $hourA == 9 && $minutesA < 50) $class = "1";
+          if($hourA == 9 && $minutesA > 50 || $hourA == 10 && $minutesA < 45) $class = "2";
+          if($hourA == 10 && $minutesA > 45 || $hourA == 11 && $minutesA < 15) $class = "6";
+          if($hourA == 11 && $minutesA > 15 || $hourA == 12 && $minutesA < 10) $class = "3";
+          if($hourA == 12 && $minutesA > 10 || $hourA == 13 && $minutesA < 05) $class = "4";
+          if($hourA == 13 && $minutesA > 05) $class = "5";
+
+          if($class == "6"){
+            echo "<br/><table><tr><td>¡Toca recreo!</td></tr></table>";
+            return;
+          }
+
+          for($i = 1; $i < 7; $i++){
+            foreach($schedule as $day => $subjects){
+              if($day != $dayA) continue;
+              echo "<h3 style='margin-left:auto; margin-right:auto; width:30%; background-color: lightblue;'>Toca: {$subjects[$class]}</h3>";
+              return;
+            }
+          }
+        }
     ?>
     <h1>Horario 2ºDAW - Mañana</h1>
     <br/>
@@ -84,5 +117,22 @@
       </tr>  
       <?php printLegend()?>
     </table>
+    <h3>Buscar qué toca:</h3>
+    <select id="day" name="day" form="form">
+      <option value="L">Lunes</option>
+      <option value="M">Martes</option>
+      <option value="X">Miércoles</option>
+      <option value="J">Jueves</option>
+      <option value="V">Viernes</option>
+    </select>
+    <br/>
+    <form action="ut1.3.php" id="form" method="POST">
+      <input type="number" maxlength="2" required="true" onKeyDown="return false" id="hour" name="hour" placeholder="Hora" min="8" max="13">
+      <input type="number" maxlength="2" default="0" onKeyDown="return false" id="minutes" name="minutes" placeholder="Minutos" min="0" max="59">
+      <input type="submit">
+    </form>  
+    <?php
+      if(count($_POST)) findSubject();
+    ?>
   </body>
 </html>
