@@ -14,7 +14,7 @@
       th {
         background-color: lightblue;
       }
-      h1, h3, select, form {
+      h1, h2, h3, select, form {
         text-align: center;
       }
       select, button {
@@ -66,7 +66,7 @@
         }
 
         function findSubject($dayA, $hourA, $minutesA){
-          global $schedule;
+          global $schedule, $legend;
           $flag = false;
           if(is_null($dayA)){
             date_default_timezone_set("Europe/London");
@@ -75,7 +75,7 @@
             $minutesA = date("i");
             $flag = true;
           }
-          $class;
+          //$class;
 
           if($hourA == 8 && $minutesA < 55) $class = "0";
           if($hourA == 8 && $minutesA >= 55 || $hourA == 9 && $minutesA < 50) $class = "1";
@@ -89,13 +89,33 @@
             if($flag) echo "<br/><table><tr><td>¡Ahora toca recreo!</td></tr></table>";
             else echo "<br/><table><tr><td>¡Toca recreo!</td></tr></table>";
             return;
+          }elseif(is_null($class)){
+            echo "<h2>Ahora mismo no toca nada. El horario es de Lunes a Viernes de 8:00 a 14:00</h2>";
           }
 
           for($i = 1; $i < 7; $i++){
             foreach($schedule as $day => $subjects){
               if($day != $dayA) continue;
-              if($flag) echo "<h3 style='margin-left:auto; margin-right:auto; width:30%; background-color: lightblue;'>Ahora Toca: {$subjects[$class]}</h3>";
-              else {
+              if($flag){
+                echo "<h2>Ahora Toca:</h2>";
+                foreach($legend as $subject => $info){
+                  if($subject != $subjects[$class]) continue;?>
+                  <table>
+                    <tr>
+                      <th>Código</th>
+                      <th>Materia</th>
+                      <th>Docente</th>
+                      <th>Aula</th>
+                    </tr>
+                    <tr>
+                      <td><?php echo $subject;?></td>
+                      <?php for($i = 0; $i < 3; $i++){?>
+                          <td><?php echo $info[$i];?></td>
+                      <?php }?>
+                    </tr>
+                  </table>
+                <?php }
+              }else {
                 if($day == "Mo") $dayS = "Lunes";
                 if($day == "Tu") $dayS = "Martes";
                 if($day == "We") $dayS = "Miércoles";
@@ -112,6 +132,8 @@
         }
     ?>
     <h1>Horario 2ºDAW - Mañana</h1>
+    <?php findSubject(null, null, null);?>
+    <br/>
     <table>
       <tr>
         <th></th>
@@ -134,7 +156,6 @@
       <?php printLegend()?>
     </table>
     <br/>
-    <?php findSubject(null, null, null);?>
     <h3>Buscar qué toca eligiendo día y hora:</h3>
     <select id="day" name="day" form="formA">
       <option value="Mo">Lunes</option>
