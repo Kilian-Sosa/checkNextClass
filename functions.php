@@ -1,25 +1,29 @@
 <?php  
     function printSchedule(){
-    global $schedule;
+        $schedule = simplexml_load_file("schedule.xml");
+        
+        
         for($i = 0; $i < 7; $i++){ ?>
             <tr>
-                <?php 
-                    foreach($schedule as $day => $subjects){?>
-                    <td><?php echo $subjects[$i];?></td>
-                    <?php }
-                ?>
+                <td><?php echo $schedule -> ti -> class[$i];?></td>
+                <td><?php echo $schedule -> mo -> class[$i] -> initials;?></td>
+                <td><?php echo $schedule -> tu -> class[$i] -> initials;?></td>
+                <td><?php echo $schedule -> we -> class[$i] -> initials;?></td>
+                <td><?php echo $schedule -> th -> class[$i] -> initials;?></td>
+                <td><?php echo $schedule -> fr -> class[$i] -> initials;?></td>
             </tr>
         <?php }
     };
 
     function printLegend(){
-    global $legend;
-        foreach($legend as $subject => $info){?>
+        $legend = simplexml_load_file("legend.xml");
+
+        for($i = 0; $i < 5; $i++){ ?>
             <tr>
-            <td><?php echo $subject;?></td>
-            <?php for($i = 0; $i < 3; $i++){?>
-                <td><?php echo $info[$i];?></td>
-            <?php }?>
+                <td><?php echo $legend -> class[$i] -> initials;?></td>
+                <td><?php echo $legend -> class[$i] -> subject;?></td>
+                <td><?php echo $legend -> class[$i] -> teacher;?></td>
+                <td><?php echo $legend -> class[$i] -> classroom;?></td>
             </tr>
         <?php }
     }
