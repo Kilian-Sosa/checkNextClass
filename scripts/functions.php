@@ -1,6 +1,6 @@
 <?php  
     function printSchedule(){
-        $schedule = simplexml_load_file("schedule.xml");
+        $schedule = simplexml_load_file("./data/schedule.xml");
         
         
         for($i = 0; $i < 7; $i++){ ?>
@@ -16,7 +16,7 @@
     };
 
     function printLegend(){
-        $legend = simplexml_load_file("legend.xml");
+        $legend = simplexml_load_file("./data/legend.xml");
 
         for($i = 0; $i < 5; $i++){ ?>
             <tr>

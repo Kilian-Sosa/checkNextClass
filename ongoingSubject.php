@@ -5,15 +5,15 @@
     <title>Horario 2ºDAW - Mañana</title>
   </head>
   <body>
-    <link rel="stylesheet" href="styles.css">
-    <?php include 'data.php'; include 'functions.php'; ?>
+    <link rel="stylesheet" href="styles/style.css">
+    <?php include 'data/data.php'; include 'scripts/functions.php'; ?>
     <h1>Ahora en la clase de 2º DAW - Mañana toca:</h1>
     <br/>
     <?php findCurrentSubject();?>
     
     <h2 style="padding-top: 35px">Consultar Horario Completo</h2>
-    <form style="padding-top: 35px" action="ut1.4-2.php" id="form" method="POST">
-      <input name="submit" id="img" type="image" src="schedule_img.png" alt="Consultar Horario completo">
+    <form style="padding-top: 35px" action="schedule.php" id="form" method="POST">
+      <input name="submit" id="img" type="image" src="images/schedule_img.png" alt="Consultar Horario completo">
     </form>  
   </body>
 </html>

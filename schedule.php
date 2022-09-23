@@ -4,10 +4,10 @@
     <title>Horario 2ºDAW - Mañana</title>
   </head>
   <body>
-    <link rel="stylesheet" href="styles.css">
-    <?php include 'data.php'; include 'functions.php'; ?>
-    <form style="text-align: left" action="ut1.4-1.php" id="form" method="POST">
-      <input name="submit" id="img" type="image" src="back_arrow.png" alt="Volver Atrás" width="45px" style="padding-left: 10px; padding-top: 10px">
+    <link rel="stylesheet" href="styles/style.css">
+    <?php include 'data/data.php'; include 'scripts/functions.php'; ?>
+    <form style="text-align: left" action="ongoingSubject.php" id="form" method="POST">
+      <input name="submit" id="img" type="image" src="images/back_arrow.png" alt="Volver Atrás" width="45px" style="padding-left: 10px; padding-top: 10px">
     </form>  
     <h1>Horario 2ºDAW - Mañana</h1>
     <br/>
