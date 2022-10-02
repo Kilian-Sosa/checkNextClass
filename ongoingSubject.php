@@ -42,7 +42,7 @@
     
     <h2 style="padding-top: 35px">Consultar Horario Completo</h2>
     <form style="padding-top: 35px" action="schedule.php" id="form" method="POST">
-      <input type="hidden" id="class" name="class" value="<?php print_r($class);?>">
+      <input type="hidden" id="class" name="class" value="<?php echo $class?>">
       <input name="submit" id="img" type="image" src="images/schedule_img.png" alt="Consultar Horario completo">
     </form>  
   </body>
