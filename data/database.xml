@@ -1,0 +1,368 @@
+<database>
+    <schedules>
+        <schedule id="2DAWM">
+            <ti>
+                <class>08:00-08:55</class>
+                <class>08:55-09:50</class>
+                <class>09:50-10:45</class>
+                <class>10:45-11:15</class>
+                <class>11:15-12:10</class>
+                <class>12:10-13:05</class>
+                <class>13:05-14:00</class>
+            </ti>
+            <mo>
+                <class>
+                    <initials>EMR</initials>
+                </class>
+                <class>
+                    <initials>DSW</initials>
+                </class>
+                <class>
+                    <initials>DSW</initials>
+                </class>
+                <class>
+                    <initials>R</initials>
+                </class>
+                <class>
+                    <initials>DEW</initials>
+                </class>
+                <class>
+                    <initials>DEW</initials>
+                </class>
+                <class>
+                    <initials>DEW</initials>
+                </class>
+            </mo>
+            <tu>
+                <class>
+                    <initials>DPL</initials>
+                </class>
+                <class>
+                    <initials>DPL</initials>
+                </class>
+                <class>
+                    <initials>DSW</initials>
+                </class>
+                <class>
+                    <initials>E</initials>
+                </class>
+                <class>
+                    <initials>DSW</initials>
+                </class>
+                <class>
+                    <initials>DOR</initials>
+                </class>
+                <class>
+                    <initials>DOR</initials>
+                </class>
+            </tu>
+            <we>
+                <class>
+                    <initials>DEW</initials>
+                </class>
+                <class>
+                    <initials>DEW</initials>
+                </class>
+                <class>
+                    <initials>DSW</initials>
+                </class>
+                <class>
+                    <initials>CR</initials>
+                </class>
+                <class>
+                    <initials>DSW</initials>
+                </class>
+                <class>
+                    <initials>DOR</initials>
+                </class>
+                <class>
+                    <initials>DOR</initials>
+                </class>
+            </we>
+            <th>
+                <class>
+                    <initials>DPL</initials>
+                </class>
+                <class>
+                    <initials>DPL</initials>
+                </class>
+                <class>
+                    <initials>DPL</initials>
+                </class>
+                <class>
+                    <initials>E</initials>
+                </class>
+                <class>
+                    <initials>DEW</initials>
+                </class>
+                <class>
+                    <initials>DEW</initials>
+                </class>
+                <class>
+                    <initials>EMR</initials>
+                </class>
+            </th>
+            <fr>
+                <class id="1">
+                    <initials>DOR</initials>
+                </class>
+                <class id="2">
+                    <initials>DOR</initials>
+                </class>
+                <class id="3">
+                    <initials>DPL</initials>
+                </class>
+                <class id="7">
+                    <initials>O</initials>
+                </class>
+                <class id="4">
+                    <initials>EMR</initials>
+                </class>
+                <class id="5">
+                    <initials>DSW</initials>
+                </class>
+                <class id="6">
+                    <initials>DSW</initials>
+                </class>
+            </fr>
+        </schedule>
+        <schedule id="2DAMM">
+            <ti>
+                <class>08:00-08:55</class>
+                <class>08:55-09:50</class>
+                <class>09:50-10:45</class>
+                <class>10:45-11:15</class>
+                <class>11:15-12:10</class>
+                <class>12:10-13:05</class>
+                <class>13:05-14:00</class>
+            </ti>
+            <mo>
+                <class>
+                    <initials>AED</initials>
+                </class>
+                <class>
+                    <initials>AED</initials>
+                </class>
+                <class>
+                    <initials>AED</initials>
+                </class>
+                <class>
+                    <initials>R</initials>
+                </class>
+                <class>
+                    <initials>EMR</initials>
+                </class>
+                <class>
+                    <initials>SSG</initials>
+                </class>
+                <class>
+                    <initials>SSG</initials>
+                </class>
+            </mo>
+            <tu>
+                <class>
+                    <initials>DAD</initials>
+                </class>
+                <class>
+                    <initials>DAD</initials>
+                </class>
+                <class>
+                    <initials>PGL</initials>
+                </class>
+                <class>
+                    <initials>E</initials>
+                </class>
+                <class>
+                    <initials>PGL</initials>
+                </class>
+                <class>
+                    <initials>AED</initials>
+                </class>
+                <class>
+                    <initials>AED</initials>
+                </class>
+            </tu>
+            <we>
+                <class>
+                    <initials>AED</initials>
+                </class>
+                <class>
+                    <initials>AED</initials>
+                </class>
+                <class>
+                    <initials>EMR</initials>
+                </class>
+                <class>
+                    <initials>CR</initials>
+                </class>
+                <class>
+                    <initials>EMR</initials>
+                </class>
+                <class>
+                    <initials>PGV</initials>
+                </class>
+                <class>
+                    <initials>PGV</initials>
+                </class>
+            </we>
+            <th>
+                <class>
+                    <initials>SSG</initials>
+                </class>
+                <class>
+                    <initials>SSG</initials>
+                </class>
+                <class>
+                    <initials>SSG</initials>
+                </class>
+                <class>
+                    <initials>E</initials>
+                </class>
+                <class>
+                    <initials>EMR</initials>
+                </class>
+                <class>
+                    <initials>DAD</initials>
+                </class>
+                <class>
+                    <initials>DAD</initials>
+                </class>
+            </th>
+            <fr>
+                <class>
+                    <initials>PGL</initials>
+                </class>
+                <class>
+                    <initials>PGL</initials>
+                </class>
+                <class>
+                    <initials>PGV</initials>
+                </class>
+                <class>
+                    <initials>O</initials>
+                </class>
+                <class>
+                    <initials>PGV</initials>
+                </class>
+                <class>
+                    <initials>DAD</initials>
+                </class>
+                <class>
+                    <initials>DAD</initials>
+                </class>
+            </fr>
+        </schedule>
+    </schedules>   
+    <legends>
+        <legend id="2DAWM">
+            <class>
+                <initials>DSW</initials>
+                <subject>Desarrollo Web en Entorno Servidor</subject>
+                <teacher>Sergio Ramos Suárez</teacher>
+                <classroom>201</classroom>
+            </class>
+            <class>
+                <initials>DEW</initials>
+                <subject>Desarrollo Web en Entorno Cliente</subject>
+                <teacher>María del Carmen Rodríguez Suárez</teacher>
+                <classroom>201</classroom>
+            </class>
+            <class>
+                <initials>DPL</initials>
+                <subject>Despliegue de Aplicaciones Web</subject>
+                <teacher>Maria Antonia Montesdeoca Viera</teacher>
+                <classroom>201</classroom>
+            </class>
+            <class>
+                <initials>DOR</initials>
+                <subject>Diseño de Interfaces Web</subject>
+                <teacher>Ermis Papakonstantinou Báez</teacher>
+                <classroom>201</classroom>
+            </class>
+            <class>
+                <initials>EMR</initials>
+                <subject>Empresa e Iniciativa Emprendedora</subject>
+                <teacher>Maria del Sol García Trajano</teacher>
+                <classroom>201</classroom>
+            </class>
+        </legend> 
+        <legend id="2DAMM">
+            <class>
+                <initials>AED</initials>
+                <subject>Acceso a datos</subject>
+                <teacher>Jose Ignacio Zaballos</teacher>
+                <classroom>103</classroom>
+            </class>
+            <class>
+                <initials>DAD</initials>
+                <subject>Desarrollo de interfaces</subject>
+                <teacher>María de Lourdes Ventura Urbina</teacher>
+                <classroom>103</classroom>
+            </class>
+            <class>
+                <initials>EMR</initials>
+                <subject>Empresa e Iniciativa Emprendedora</subject>
+                <teacher>Maria del Sol García Trajano</teacher>
+                <classroom>103</classroom>
+            </class>
+            <class>
+                <initials>PGL</initials>
+                <subject>Programación multimedia y dispositivos móviles</subject>
+                <teacher>Miguel Ángel Hernández Rodríguez</teacher>
+                <classroom>103</classroom>
+            </class>
+            <class>
+                <initials>PGV</initials>
+                <subject>Programación de servicios y procesos</subject>
+                <teacher>Sergio Ramos Suárez</teacher>
+                <classroom>103</classroom>
+            </class>
+            <class>
+                <initials>SSG</initials>
+                <subject>Sistemas de gestión empresarial</subject>
+                <teacher>Ermis Papakonstantinou Báez</teacher>
+                <classroom>103</classroom>
+            </class>
+        </legend> 
+        <!--
+        <legend id="1CIBM">
+            <class>
+                <initials>ANZ</initials>
+                <subject>Análisis forense informático</subject>
+                <teacher>María del Cristo García</teacher>
+                <classroom>102</classroom>
+            </class>
+            <class>
+                <initials>BAG</initials>
+                <subject>Bastionado de redes y sistemas</subject>
+                <teacher>Juan Alejandro García Arbelo</teacher>
+                <classroom>102</classroom>
+            </class>
+            <class>
+                <initials>HAJ</initials>
+                <subject>Hacking ético</subject>
+                <teacher>Carlos Ojeda Alemán</teacher>
+                <classroom>102</classroom>
+            </class>
+            <class>
+                <initials>IHC</initials>
+                <subject>Incidentes de ciberseguridad</subject>
+                <teacher>María de Lourdes Ventura Urbina</teacher>
+                <classroom>102</classroom>
+            </class>
+            <class>
+                <initials>NOB</initials>
+                <subject>Normativa de ciberseguridad</subject>
+                <teacher>María del Cristo García</teacher>
+                <classroom>102</classroom>
+            </class>
+            <class>
+                <initials>PUK</initials>
+                <subject>Puesta en producción segura</subject>
+                <teacher>Jose Juán Rodríguez Martín</teacher>
+                <classroom>102</classroom>
+            </class>
+        </legend> 
+        -->
+    </legends>
+</database>
