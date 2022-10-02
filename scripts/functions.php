@@ -1,213 +1,211 @@
 <?php  
-    function printSchedule(){
-        $schedule = simplexml_load_file("./data/schedule.xml");
+    function printSchedule($class){
+        $root = simplexml_load_file("./data/database.xml");
+        $schedules = $root -> xpath("//schedule[@id = '{$class}']");
         
-        
-        for($i = 0; $i < 7; $i++){ ?>
-            <tr>
-                <td><?php echo $schedule -> ti -> class[$i];?></td>
-                <td><?php echo $schedule -> mo -> class[$i] -> initials;?></td>
-                <td><?php echo $schedule -> tu -> class[$i] -> initials;?></td>
-                <td><?php echo $schedule -> we -> class[$i] -> initials;?></td>
-                <td><?php echo $schedule -> th -> class[$i] -> initials;?></td>
-                <td><?php echo $schedule -> fr -> class[$i] -> initials;?></td>
-            </tr>
-        <?php }
+        foreach($schedules as $schedule){ 
+            for($i = 0; $i < 7; $i++){ ?>
+                <tr>
+                    <td><?php echo $schedule -> ti -> class[$i];?></td>
+                    <td><?php echo $schedule -> day[0] -> class[$i] -> initials;?></td>
+                    <td><?php echo $schedule -> day[1] -> class[$i] -> initials;?></td>
+                    <td><?php echo $schedule -> day[2] -> class[$i] -> initials;?></td>
+                    <td><?php echo $schedule -> day[3] -> class[$i] -> initials;?></td>
+                    <td><?php echo $schedule -> day[4] -> class[$i] -> initials;?></td>
+                </tr>
+            <?php }
+        }    
     };
 
-    function printLegend(){
-        $legend = simplexml_load_file("./data/legend.xml");
+    function printLegend($class){
+        $root = simplexml_load_file("./data/database.xml");
+        $legends = $root -> xpath("//legend[@id = '{$class}']");
 
-        for($i = 0; $i < 5; $i++){ ?>
-            <tr>
-                <td><?php echo $legend -> class[$i] -> initials;?></td>
-                <td><?php echo $legend -> class[$i] -> subject;?></td>
-                <td><?php echo $legend -> class[$i] -> teacher;?></td>
-                <td><?php echo $legend -> class[$i] -> classroom;?></td>
-            </tr>
-        <?php }
+        foreach($legends as $legend){ 
+            for($i = 0; $i < 5; $i++){ ?>
+                <tr>
+                    <td><?php echo $legend -> class[$i] -> initials;?></td>
+                    <td><?php echo $legend -> class[$i] -> subject;?></td>
+                    <td><?php echo $legend -> class[$i] -> teacher;?></td>
+                    <td><?php echo $legend -> class[$i] -> classroom;?></td>
+                </tr>
+            <?php }
+        }    
     }
 
-    function findSubject($dayA, $hourA, $minutesA){
-        global $schedule;
+    function findSubject($dayA, $hourA, $minutesA, $class){
+        $root = simplexml_load_file("./data/database.xml");
+        $schedules = $root -> xpath("//schedule[@id = '{$class}']");
+        $legends = $root -> xpath("//legend[@id = '{$class}']");
 
-        if($hourA == 8 && $minutesA < 55) $class = "0";
-        elseif($hourA == 8 && $minutesA >= 55 || $hourA == 9 && $minutesA < 50) $class = "1";
-        elseif($hourA == 9 && $minutesA >= 50 || $hourA == 10 && $minutesA < 45) $class = "2";
-        elseif($hourA == 10 && $minutesA >= 45 || $hourA == 11 && $minutesA < 15) $class = "7";
-        elseif($hourA == 11 && $minutesA >= 15 || $hourA == 12 && $minutesA < 10) $class = "4";
-        elseif($hourA == 12 && $minutesA >= 10 || $hourA == 13 && $minutesA < 05) $class = "5";
-        else $class = "6";
-
-        if($class == "7"){
+        if($hourA == 8 && $minutesA < 55) $hour = "08:00-08:55";
+        elseif($hourA == 8 && $minutesA >= 55 || $hourA == 9 && $minutesA < 50) $hour = "08:55-09:50";
+        elseif($hourA == 9 && $minutesA >= 50 || $hourA == 10 && $minutesA < 45) $hour = "09:50-10:45";
+        elseif($hourA == 10 && $minutesA >= 45 || $hourA == 11 && $minutesA < 15) {
             echo "<br/><table><tr><td>¡Toca recreo!</td></tr></table>";
             return;
-        }
+        }elseif($hourA == 11 && $minutesA >= 15 || $hourA == 12 && $minutesA < 10) $hour = "11:15-12:10";
+        elseif($hourA == 12 && $minutesA >= 10 || $hourA == 13 && $minutesA < 05) $hour = "12:10-13:05";
+        elseif($hourA == 13 && $minutesA >= 05 || $hourA == 14 && $minutesA == 0) $hour = "13:05-14:00";
 
         for($i = 1; $i < 7; $i++){
-            foreach($schedule as $day => $subjects){
-                if($day != $dayA) continue;
-                if($day == "Mo") $dayS = "Lunes";
-                elseif($day == "Tu") $dayS = "Martes";
-                elseif($day == "We") $dayS = "Miércoles";
-                elseif($day == "Th") $dayS = "Jueves";
-                elseif($day == "Fr") $dayS = "Viernes";
+            foreach($schedules as $schedule){ 
+                $subjects = $schedule -> xpath("./day[@id = '{$dayA}']/class[@id = '{$hour}']");
+                foreach($subjects as $subject) 
+                    $initialsS = $subject -> initials;
+
+                if($dayA == "mo") $dayS = "Lunes";
+                elseif($dayA == "tu") $dayS = "Martes";
+                elseif($dayA == "we") $dayS = "Miércoles";
+                elseif($dayA == "th") $dayS = "Jueves";
+                elseif($dayA == "fr") $dayS = "Viernes";
                 if($minutesA < 10) {
                     $minutes = "0{$minutesA}";
-                    echo "<h3 style='margin-left:auto; margin-right:auto; width:30%; background-color: lightblue;'>El {$dayS} a las {$hourA}:{$minutes} Toca {$subjects[$class]}</h3>";
-                }else echo "<h3 style='margin-left:auto; margin-right:auto; width:30%; background-color: lightblue;'>El {$dayS} a las {$hourA}:{$minutesA} Toca {$subjects[$class]}</h3>";
-                return;
-            }
+                    echo "<h3 style='margin-left:auto; margin-right:auto; width:30%; background-color: lightblue;'>El {$dayS} a las {$hourA}:{$minutes} Toca:</h3>";
+                }else echo "<h3 style='margin-left:auto; margin-right:auto; width:30%; background-color: lightblue;'>El {$dayS} a las {$hourA}:{$minutesA} Toca:</h3>";
+                
+
+                foreach($legends as $legend){  
+                    foreach($legends as $legend){ 
+                        for($i = 0; $i < 5; $i++){ 
+                            $initialsL = $legend -> class[$i] -> initials;
+                            if(print_r($initialsL, true) != print_r($initialsS, true)) continue;?>
+                            <table>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Materia</th>
+                                    <th>Docente</th>
+                                    <th>Aula</th>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $initialsL;?></td>
+                                    <td><?php echo $legend -> class[$i] -> subject;?></td>
+                                    <td><?php echo $legend -> class[$i] -> teacher;?></td>
+                                    <td><?php echo $legend -> class[$i] -> classroom;?></td>
+                                </tr>
+                            </table>
+                        <?php }
+                    }       
+                    return;
+                }
+            }    
         }
     }
 
-    function findCurrentSubject(){
-        global $schedule, $legend;
+    function findCurrentSubject($class){
+        $root = simplexml_load_file("./data/database.xml");
+        $schedules = $root -> xpath("//schedule[@id = '{$class}']");
+        $legends = $root -> xpath("//legend[@id = '{$class}']");
+
         date_default_timezone_set("Europe/London");
-        $dayA = substr(date(DATE_RFC850), 0, 2);
+        $dayA = strtolower(substr(date(DATE_RFC850), 0, 2));
+        
         $hourA = date("H");
         $minutesA = date("i");
-        $class = null;
-        
-        if($hourA == 8 && $minutesA < 55) $class = "0";
-        elseif($hourA == 8 && $minutesA >= 55 || $hourA == 9 && $minutesA < 50) $class = "1";
-        elseif($hourA == 9 && $minutesA >= 50 || $hourA == 10 && $minutesA < 45) $class = "2";
-        elseif($hourA == 10 && $minutesA >= 45 || $hourA == 11 && $minutesA < 15) $class = "7";
-        elseif($hourA == 11 && $minutesA >= 15 || $hourA == 12 && $minutesA < 10) $class = "4";
-        elseif($hourA == 12 && $minutesA >= 10 || $hourA == 13 && $minutesA < 05) $class = "5";
-        elseif($hourA == 13 && $minutesA >= 05) $class = "6";
+        $hour = "7";
+        if($hourA == 8 && $minutesA < 55) $hour = "08:00-08:55";
+        elseif($hourA == 8 && $minutesA >= 55 || $hourA == 9 && $minutesA < 50) $hour = "08:55-09:50";
+        elseif($hourA == 9 && $minutesA >= 50 || $hourA == 10 && $minutesA < 45) $hour = "09:50-10:45";
+        elseif($hourA == 10 && $minutesA >= 45 || $hourA == 11 && $minutesA < 15) $hour = "10:45-11:15";
+        elseif($hourA == 11 && $minutesA >= 15 || $hourA == 12 && $minutesA < 10) $hour = "11:15-12:10";
+        elseif($hourA == 12 && $minutesA >= 10 || $hourA == 13 && $minutesA < 05) $hour = "12:10-13:05";
+        elseif($hourA == 13 && $minutesA >= 05 || $hourA == 14 && $minutesA == 0) $hour = "13:05-14:00";
+        elseif($hourA >= 14) $hour = "15";
 
-        if($class == "7"){
-            echo "<br/><table><tr><td>¡Ahora toca recreo!</td></tr></table>";
-            checkNextClass($dayA, $hourA, $minutesA);
-            return;
-        }elseif(is_null($class) || $dayA == "Sa" || $dayA == "Su"){
-            checkNextClass($dayA, $hourA, $minutesA);
+        if($hour == "10:45-11:15" || $hour == "7" || $hour == "15" || $dayA == "fr" && $hour == "15" || $dayA == "sa" || $dayA == "su"){
+            if(is_null($hour)){
+                $time = (new DateTime('now')) -> diff((new DateTime('now')) -> setTime(8, 0, 0, 0));
+            }elseif($hour == "10:45-11:15") {
+                echo "<br/><table><tr><td>¡Ahora toca recreo!</td></tr></table>";
+                $time = (new DateTime('now')) -> diff((new DateTime('now')) -> setTime(11, 15, 0, 0));
+            }elseif($dayA == "fr" || $dayA == "sa" || $dayA == "su")
+                if($dayA == "fr") $time = (new DateTime('now')) -> diff(((new DateTime('now')) -> modify('+3 day') -> setTime(8, 0, 0, 0)));
+                elseif($dayA == "sa") $time = (new DateTime('now')) -> diff(((new DateTime('now')) -> modify('+2 day') -> setTime(8, 0, 0, 0)));
+                else $time = (new DateTime('now')) -> diff(((new DateTime('now')) -> modify('+1 day') -> setTime(8, 0, 0, 0)));
+            else $time = (new DateTime('now')) -> diff(((new DateTime('now')) -> modify('+1 day')) -> setTime(8, 0, 0, 0));
+
+            echo "<h2>La siguiente clase es dentro de {$time -> format('%h horas y %i minutos')}:</h2>";
+            checkNextClass($dayA, $hourA, $minutesA, $class);
             return;
         }
 
         for($i = 1; $i < 7; $i++){
-            foreach($schedule as $day => $subjects){
-                if($day != $dayA) continue;
-                    foreach($legend as $subject => $info){
-                        if($subject != $subjects[$class]) continue;?>
-                        <table>
-                            <tr>
-                            <th>Código</th>
-                            <th>Materia</th>
-                            <th>Docente</th>
-                            <th>Aula</th>
-                            </tr>
-                            <tr>
-                            <td><?php echo $subject;?></td>
-                            <?php for($i = 0; $i < 3; $i++){?>
-                                <td><?php echo $info[$i];?></td>
-                            <?php }?>
-                            </tr>
-                        </table>
-                    <?php }
-                return;
-            }
+            foreach($schedules as $schedule){ 
+                $subjects = $schedule -> xpath("./day[@id = '{$dayA}']/class[@id = '{$hour}']");
+                foreach($subjects as $subject)
+                    $initialsS = $subject -> initials;
+
+                foreach($legends as $legend){  
+                    foreach($legends as $legend){ 
+                        for($i = 0; $i < 5; $i++){ 
+                            $initialsL = $legend -> class[$i] -> initials;
+                            if(print_r($initialsL, true) != print_r($initialsS, true)) continue;?>
+                            <table>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Materia</th>
+                                    <th>Docente</th>
+                                    <th>Aula</th>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $initialsL;?></td>
+                                    <td><?php echo $legend -> class[$i] -> subject;?></td>
+                                    <td><?php echo $legend -> class[$i] -> teacher;?></td>
+                                    <td><?php echo $legend -> class[$i] -> classroom;?></td>
+                                </tr>
+                            </table>
+                        <?php }
+                    }       
+                    return;
+                }
+            }    
         }
     }
 
-    function checkNextClass($dayA, $hourA, $minutesA){
-        global $schedule, $legend;
+    function checkNextClass($dayA, $hourA, $minutesA, $class){
+        $root = simplexml_load_file("./data/database.xml");
+        $schedules = $root -> xpath("//schedule[@id = '{$class}']");
+        $legends = $root -> xpath("//legend[@id = '{$class}']");
+        $dayS = $dayA;
     
-        if($hourA == 10 && $minutesA >= 45  || $hourA == 11 && $minutesA < 15) $class = "7";
-        elseif($hourA < 8) $class = "8";
+        $hour = "08:00-08:55";
+        if($hourA == 10 && $minutesA >= 45  || $hourA == 11 && $minutesA < 15) $hour = "11:15-12:10";
+        elseif($hourA < 8 && ($dayA != "sa" && $dayA != "su")) $hour = "08:00-08:55";
         else{
-            $class = "9";
-            if($dayA == "Mo") $dayS = "Tu";
-            elseif($dayA == "Tu") $dayS = "We";
-            elseif($dayA == "We") $dayS = "Th";
-            elseif($dayA == "Th") $dayS = "Fr";
-            elseif($dayA == "Fr") $dayS = "Mo";
+            if($dayA == "mo") $dayS = "tu";
+            elseif($dayA == "tu") $dayS = "we";
+            elseif($dayA == "we") $dayS = "th";
+            elseif($dayA == "th") $dayS = "fr";
+            elseif($dayA == "fr" || $dayA == "sa" || $dayA == "su") $dayS = "mo";
         }
+        
+        foreach($schedules as $schedule){
+            $subjects = $schedule -> xpath("./day[@id = '{$dayS}']/class[@id = '{$hour}']");
+            foreach($subjects as $subject){
+                $initialsS = $subject -> initials;
+            }
 
-        foreach($schedule as $day => $subjects){
-            if($class == "7" && $day == $dayA){
-                    $time = (new DateTime('now')) -> diff((new DateTime('now')) -> setTime(11, 45, 0, 0));
-                    echo "<h2>La siguiente clase es dentro de {$time->format('%h horas, %i minutos y %s segundos')}:</h2>";
-                    foreach($legend as $subject => $info){
-                        if($subject != $subjects[4]) continue;?>
+            foreach($legends as $legend){  
+                foreach($legends as $legend){ 
+                    for($i = 0; $i < 5; $i++){ 
+                        $initialsL = $legend -> class[$i] -> initials;
+                        if(print_r($initialsL, true) != print_r($initialsS, true)) continue;?>
                         <table>
                             <tr>
-                            <th>Código</th>
-                            <th>Materia</th>
-                            <th>Docente</th>
-                            <th>Aula</th>
+                                <th>Código</th>
+                                <th>Materia</th>
+                                <th>Docente</th>
+                                <th>Aula</th>
                             </tr>
                             <tr>
-                            <td><?php echo $subject;?></td>
-                            <?php for($i = 0; $i < 3; $i++){?>
-                                <td><?php echo $info[$i];?></td>
-                            <?php }?>
+                                <td><?php echo $initialsL;?></td>
+                                <td><?php echo $legend -> class[$i] -> subject;?></td>
+                                <td><?php echo $legend -> class[$i] -> teacher;?></td>
+                                <td><?php echo $legend -> class[$i] -> classroom;?></td>
                             </tr>
                         </table>
-                    <?php return;}
-            }elseif($class == "8" && $day == $dayA){
-                    $time = (new DateTime('now')) -> diff((new DateTime('now')) -> setTime(8, 0, 0, 0));
-                    echo "<h2>La siguiente clase es dentro de {$time->format('%h horas, %i minutos y %s segundos')}:</h2>";
-                    foreach($legend as $subject => $info){
-                        if($subject != $subjects[0]) continue;?>
-                        <table>
-                            <tr>
-                            <th>Código</th>
-                            <th>Materia</th>
-                            <th>Docente</th>
-                            <th>Aula</th>
-                            </tr>
-                            <tr>
-                            <td><?php echo $subject;?></td>
-                            <?php for($i = 0; $i < 3; $i++){?>
-                                <td><?php echo $info[$i];?></td>
-                            <?php }?>
-                            </tr>
-                        </table>
-                    <?php return;}
-            }elseif($day == $dayS || $dayS == "Mo"){
-                $time = (new DateTime('now')) -> diff(((new DateTime('now')) -> modify('+1 day')) -> setTime(8, 0, 0, 0));
-                echo "<h2>La siguiente clase es dentro de {$time->format('%h horas, %i minutos y %s segundos')}:</h2>";
-                foreach($legend as $subject => $info){
-                    if($subject != $subjects[0]) continue;?>
-                    <table>
-                        <tr>
-                        <th>Código</th>
-                        <th>Materia</th>
-                        <th>Docente</th>
-                        <th>Aula</th>
-                        </tr>
-                        <tr>
-                        <td><?php echo $subject;?></td>
-                        <?php for($i = 0; $i < 3; $i++){?>
-                            <td><?php echo $info[$i];?></td>
-                        <?php }?>
-                        </tr>
-                    </table>
-                <?php return;}
-            }elseif($dayA == "Sa" || $dayA == "Su"){
-                foreach($legend as $subject => $info){
-                    if($subject != $subjects[0]) continue;
-                    
-                    if($dayA == "Sa") $time = (new DateTime('now')) -> diff(((new DateTime('now')) -> modify('+2 day') -> setTime(8, 0, 0, 0)));
-                    else $time = (new DateTime('now')) -> diff(((new DateTime('now')) -> modify('+1 day') -> setTime(8, 0, 0, 0)));
-                    echo "<h2>La siguiente clase es dentro de {$time -> format('%d días, %h horas, %i minutos y %s segundos')}:</h2>";?>
-                    <table>
-                        <tr>
-                        <th>Código</th>
-                        <th>Materia</th>
-                        <th>Docente</th>
-                        <th>Aula</th>
-                        </tr>
-                        <tr>
-                        <td><?php echo $subject;?></td>
-                        <?php for($i = 0; $i < 3; $i++){?>
-                            <td><?php echo $info[$i];?></td>
-                        <?php }?>
-                        </tr>
-                    </table>
-                <?php return;}
+                    <?php } 
+                }       
             }
         }
     }
