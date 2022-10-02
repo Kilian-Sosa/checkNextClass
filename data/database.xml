@@ -10,121 +10,121 @@
                 <class>12:10-13:05</class>
                 <class>13:05-14:00</class>
             </ti>
-            <mo>
-                <class>
+            <day id="mo">
+                <class id="08:00-08:55">
                     <initials>EMR</initials>
                 </class>
-                <class>
+                <class id="08:55-09:50">
                     <initials>DSW</initials>
                 </class>
-                <class>
+                <class id="09:50-10:45">
                     <initials>DSW</initials>
                 </class>
-                <class>
+                <class id="10:45-11:15">
                     <initials>R</initials>
                 </class>
-                <class>
+                <class id="11:15-12:10">
                     <initials>DEW</initials>
                 </class>
-                <class>
+                <class id="12:10-13:05">
                     <initials>DEW</initials>
                 </class>
-                <class>
+                <class id="13:05-14:00">
                     <initials>DEW</initials>
                 </class>
-            </mo>
-            <tu>
-                <class>
+            </day>
+            <day id="tu">
+                <class id="08:00-08:55">
                     <initials>DPL</initials>
                 </class>
-                <class>
+                <class id="08:55-09:50">
                     <initials>DPL</initials>
                 </class>
-                <class>
+                <class id="09:50-10:45">
                     <initials>DSW</initials>
                 </class>
-                <class>
+                <class id="10:45-11:15">
                     <initials>E</initials>
                 </class>
-                <class>
+                <class id="11:15-12:10">
                     <initials>DSW</initials>
                 </class>
-                <class>
+                <class id="12:10-13:05">
                     <initials>DOR</initials>
                 </class>
-                <class>
+                <class id="13:05-14:00">
                     <initials>DOR</initials>
                 </class>
-            </tu>
-            <we>
-                <class>
+            </day>
+            <day id="we">
+                <class id="08:00-08:55">
                     <initials>DEW</initials>
                 </class>
-                <class>
+                <class id="08:55-09:50">
                     <initials>DEW</initials>
                 </class>
-                <class>
+                <class id="09:50-10:45">
                     <initials>DSW</initials>
                 </class>
-                <class>
+                <class id="10:45-11:15">
                     <initials>CR</initials>
                 </class>
-                <class>
+                <class id="11:15-12:10">
                     <initials>DSW</initials>
                 </class>
-                <class>
+                <class id="12:10-13:05">
                     <initials>DOR</initials>
                 </class>
-                <class>
+                <class id="13:05-14:00">
                     <initials>DOR</initials>
                 </class>
-            </we>
-            <th>
-                <class>
+            </day>
+            <day id="th">
+                <class id="08:00-08:55">
                     <initials>DPL</initials>
                 </class>
-                <class>
+                <class id="08:55-09:50">
                     <initials>DPL</initials>
                 </class>
-                <class>
+                <class id="09:50-10:45">
                     <initials>DPL</initials>
                 </class>
-                <class>
+                <class id="10:45-11:15">
                     <initials>E</initials>
                 </class>
-                <class>
+                <class id="11:15-12:10">
                     <initials>DEW</initials>
                 </class>
-                <class>
+                <class id="12:10-13:05">
                     <initials>DEW</initials>
                 </class>
-                <class>
+                <class id="13:05-14:00">
                     <initials>EMR</initials>
                 </class>
-            </th>
-            <fr>
-                <class id="1">
+            </day>
+            <day id="fr">
+                <class id="08:00-08:55">
                     <initials>DOR</initials>
                 </class>
-                <class id="2">
+                <class id="08:55-09:50">
                     <initials>DOR</initials>
                 </class>
-                <class id="3">
+                <class id="09:50-10:45">
                     <initials>DPL</initials>
                 </class>
-                <class id="7">
+                <class id="10:45-11:15">
                     <initials>O</initials>
                 </class>
-                <class id="4">
+                <class id="11:15-12:10">
                     <initials>EMR</initials>
                 </class>
-                <class id="5">
+                <class id="12:10-13:05">
                     <initials>DSW</initials>
                 </class>
-                <class id="6">
+                <class id="13:05-14:00">
                     <initials>DSW</initials>
                 </class>
-            </fr>
+            </day>
         </schedule>
         <schedule id="2DAMM">
             <ti>
@@ -136,121 +136,121 @@
                 <class>12:10-13:05</class>
                 <class>13:05-14:00</class>
             </ti>
-            <mo>
-                <class>
+            <day id="mo">
+                <class id="08:00-08:55">
                     <initials>AED</initials>
                 </class>
-                <class>
+                <class id="08:55-09:50">
                     <initials>AED</initials>
                 </class>
-                <class>
+                <class id="09:50-10:45">
                     <initials>AED</initials>
                 </class>
-                <class>
+                <class id="10:45-11:15">
                     <initials>R</initials>
                 </class>
-                <class>
+                <class id="11:15-12:10">
                     <initials>EMR</initials>
                 </class>
-                <class>
+                <class id="12:10-13:05">
                     <initials>SSG</initials>
                 </class>
-                <class>
+                <class id="13:05-14:00">
                     <initials>SSG</initials>
                 </class>
-            </mo>
-            <tu>
-                <class>
+            </day>
+            <day id="tu">
+                <class id="08:00-08:55">
                     <initials>DAD</initials>
                 </class>
-                <class>
+                <class id="08:55-09:50">
                     <initials>DAD</initials>
                 </class>
-                <class>
+                <class id="09:50-10:45">
                     <initials>PGL</initials>
                 </class>
-                <class>
+                <class id="10:45-11:15">
                     <initials>E</initials>
                 </class>
-                <class>
+                <class id="11:15-12:10">
                     <initials>PGL</initials>
                 </class>
-                <class>
+                <class id="12:10-13:05">
                     <initials>AED</initials>
                 </class>
-                <class>
+                <class id="13:05-14:00">
                     <initials>AED</initials>
                 </class>
-            </tu>
-            <we>
-                <class>
+            </day>
+            <day id="we">
+                <class id="08:00-08:55">
                     <initials>AED</initials>
                 </class>
-                <class>
+                <class id="08:55-09:50">
                     <initials>AED</initials>
                 </class>
-                <class>
+                <class id="09:50-10:45">
                     <initials>EMR</initials>
                 </class>
-                <class>
+                <class id="10:45-11:15">
                     <initials>CR</initials>
                 </class>
-                <class>
+                <class id="11:15-12:10">
                     <initials>EMR</initials>
                 </class>
-                <class>
+                <class id="12:10-13:05">
                     <initials>PGV</initials>
                 </class>
-                <class>
+                <class id="13:05-14:00">
                     <initials>PGV</initials>
                 </class>
-            </we>
-            <th>
-                <class>
+            </day>
+            <day id="th">
+                <class id="08:00-08:55">
                     <initials>SSG</initials>
                 </class>
-                <class>
+                <class id="08:55-09:50">
                     <initials>SSG</initials>
                 </class>
-                <class>
+                <class id="09:50-10:45">
                     <initials>SSG</initials>
                 </class>
-                <class>
+                <class id="10:45-11:15">
                     <initials>E</initials>
                 </class>
-                <class>
+                <class id="11:15-12:10">
                     <initials>EMR</initials>
                 </class>
-                <class>
+                <class id="12:10-13:05">
                     <initials>DAD</initials>
                 </class>
-                <class>
+                <class id="13:05-14:00">
                     <initials>DAD</initials>
                 </class>
-            </th>
-            <fr>
-                <class>
+            </day>
+            <day id="fr">
+                <class id="08:00-08:55">
                     <initials>PGL</initials>
                 </class>
-                <class>
+                <class id="08:55-09:50">
                     <initials>PGL</initials>
                 </class>
-                <class>
+                <class id="09:50-10:45">
                     <initials>PGV</initials>
                 </class>
-                <class>
+                <class id="10:45-11:15">
                     <initials>O</initials>
                 </class>
-                <class>
+                <class id="11:15-12:10">
                     <initials>PGV</initials>
                 </class>
-                <class>
+                <class id="12:10-13:05">
                     <initials>DAD</initials>
                 </class>
-                <class>
+                <class id="13:05-14:00">
                     <initials>DAD</initials>
                 </class>
-            </fr>
+            </day>
         </schedule>
     </schedules>   
     <legends>
