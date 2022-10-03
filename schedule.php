@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <?php 
+    <?php include 'scripts/functions.php';
       if(!isset($_POST["class"])) $class = "2DAWM";
       else $class = $_POST["class"];
-      echo "<title>Horario {$class}</title>";?> 
+      $name = getName($class);
+      echo "<title>Horario de {$name}</title>";?> 
   </head>
   <body>
     <link rel="stylesheet" href="styles/style.css">
-    <?php include 'scripts/functions.php';?>
     <form style="text-align: left" action="ongoingSubject.php" id="form" method="POST">
       <input name="submit" id="img" type="image" src="images/back_arrow.png" alt="Volver Atrás" width="45px" style="padding-left: 10px; padding-top: 10px">
     </form>  
-    <?php echo "<h1>Horario de {$class}</h1>";?>
+    <?php 
+      echo "<h1>Horario de {$name}</h1>";?>
     <br/>
     <table>
       <tr>
@@ -27,13 +28,23 @@
     </table>
     <br/>
     <table>
-      <tr>
-        <th>Código</th>
-        <th>Materia</th>
-        <th>Docente</th>
-        <th>Aula</th>
-      </tr>  
-      <?php printLegend($class);?>
+      <?php if(substr($class, 0, 1) != "D"){?>
+        <tr>
+          <th>Código</th>
+          <th>Materia</th>
+          <th>Docente</th>
+          <th>Aula</th>
+        </tr>  
+        <?php printLegendGroup($class);
+      }else{?>
+        <tr>
+          <th>Grupo</th>
+          <th>Código</th>
+          <th>Materia</th>
+          <th>Aula</th>
+        </tr>  
+        <?php printLegendTeacher($class);
+      }?>
     </table>
     <br/>
     <h3>Buscar qué toca eligiendo día y hora:</h3>
